@@ -9,6 +9,8 @@ before_install:
 script: 
   - docker run ankesh/docker-react npm run test -- --coverage
 
+before_deploy: "echo 'ready?'"
+
 deploy:
   provider: elasticbeanstalk
   region: "ap-south-1"
@@ -16,6 +18,9 @@ deploy:
   env: "Dockerreact-env"
   bucket_name: "elasticbeanstalk-ap-south-1-024995093762"
   bucket_path: "docker-react"
-  access_key_id: $AWS_ACCESS_KEY
+  access_key_id: 
+    secure: "$AWS_ACCESS_KEY"
   secret_access_key: 
-    secure: $AWS_SECRET_KEY
+    secure: "$AWS_SECRET_KEY"
+
+after_deploy: "echo 'done'"
