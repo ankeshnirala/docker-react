@@ -11,8 +11,7 @@ script: echo "Success!"
 before_deploy: "echo 'ready?'"
 
 deploy:
-  allow_skip: false
-  skip_cleanup: true
+  cleanup: true
   provider: elasticbeanstalk
   region: "ap-south-1"
   app: "docker-react"
