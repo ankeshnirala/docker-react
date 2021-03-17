@@ -4,9 +4,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t ankesh/docker-react  .
+  - docker build -t ankesh/docker-react  -f Dockerfile.dev .
 
-script: echo "Success!"
+script: 
+  - docker run -t ankesh/docker-react  npm run test -- --coverage
 
 before_deploy: "echo 'ready?'"
 
