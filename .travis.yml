@@ -6,6 +6,8 @@ services:
 before_install:
   - docker build -t ankesh/docker-react -f Dockerfile.dev .
 
+script: echo "Success!"
+
 before_deploy: "echo 'ready?'"
 
 deploy:
@@ -23,6 +25,3 @@ deploy:
     secure: "i2sydjiYmC6c4X6KfXQXMwmenPP80eGSqtCh5zbV"
 
 after_deploy: "echo 'done'"
-
-script: 
-  - docker run ankesh/docker-react npm run test -- --coverage
